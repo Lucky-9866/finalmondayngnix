@@ -18,7 +18,7 @@ module "vpc" {
 }
 
 module "subnet" {
-  source                          = "./module/subnet"
+  source                          = "./modules/subnet"
   for_each                        = { for eachNetwork in var.subnet : index(var.subnet, eachNetwork) => eachNetwork }
   vpc_id                          = module.vpc.aws_vpc_main.id
   cidr_block                      = each.value.cidr_block
@@ -33,7 +33,7 @@ module "subnet" {
 }
 
 module "security-groups" {
-  source      = "./module/security_group"
+  source      = "./modules/security_group"
   depends_on  = [ module.custom-vpc ]
   vpc_id      = module.custom-vpc[0].vpc_id
   for_each    = { for eachRule in var.sgrules : eachRule.name => eachRule }
@@ -44,7 +44,7 @@ module "security-groups" {
   egress      = each.value.egress
 }
 module "route-table" {
-  source                     = "./module/routetable"
+  source                     = "./modules/routetable"
   for_each                   = { for eachNetwork in var.route_table : eachNetwork.cidr_block => eachNetwork }
   vpc_id                     = module.vpc.aws_vpc_main.id
   carrier_gateway_id         = each.value.carrier_gateway_id
@@ -69,11 +69,11 @@ module "routetableassoc" {
   route_table_id = module.rt.aws_route_table_main.id
 }
 module "igw" {
-       source       = "./module/igw"
+       source       = "./modules/igw"
        vpc_id       = module.custom-vpc.vpc_id
 }
 module "instance" {
-       source = "./module/ec2"
+       source = "./modules/ec2"
        for_each                             = { for eachNetwork in var.instance : eachNetwork.subnet_id => eachNetwork }
        host_id                              = each.value.host_id
        subnet_id                            = each.key
@@ -110,25 +110,22 @@ module "instance" {
        secondary_private_ips                = each.value.secondary_private_ips
        source_dest_check                    = each.value.source_dest_check
        spot_instance_request_id             = each.value.spot_instance_request_id
-       tags_all                             = each.value.tags_all
        tenancy                              = each.value.tenancy
        user_data                            = each.value.user_data
        user_data_base64                     = each.value.user_data_base64
        user_data_replace_on_change          = each.value.user_data_replace_on_change
        vpc_security_group_ids               = each.value.vpc_security_group_ids 
        hibernation                          = each.value.hibernation
-       volume_tags                          = each.value.volume_tags  
+       volume_tags                          = each.value.volume_tags 
+       tags                                 = each.value.tags 
 }
 module "nat" {
-    source = "./module/nat"
+    source = "./modules/nat"
     for_each                              = { for eachNetwork in var.nat : eachNetwork.allocation_id=> eachNetwork }
     allocation_id                         = each.key
     connectivity_type                     = each.value.connectivity_type  
     private_ip                            = each.value.private_ip
-    subnet_id                             = each.value.subnet_id
-    secondary_allocation_ids              = each.value.secondary_allocation_ids
-    secondary_private_ip_address_count    = each.value.secondary_private_ip_address_count
-    secondary_private_ip_addresses        = each.value.secondary_private_ip_addresses 
+    public_subnet_id                      = each.value.public_subnet_id
     tags                                  = each.value.tags
   
 }
