@@ -27,7 +27,7 @@ variable "ipv6_cidr_block" {
   description = "value of ipv6_cidr_block"
 }
 
-variable "gateway_id" {
+variable "internet_gateway_id" {
   type        = string
   description = "value of gateway_id"
 

@@ -1,8 +1,8 @@
-variable "vpc_cidr" {
+variable "cidr_block" {
+  description = "CIDR block for the VPC"
   type        = string
-  description = "The CIDR block for AWS Network"
+  default     = "10.0.0.0/16"  # Or whichever CIDR block you need
 }
-
 variable "ipv4_ipam_pool_id" {
 
 }
@@ -48,7 +48,7 @@ variable "ipv6_cidr_block_network_border_group" {
 variable "ipv6_cidr_block" {
 
 }
-variable "public_subnet" {}
+
 
 variable "tags" {
 

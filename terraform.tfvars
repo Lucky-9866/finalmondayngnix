@@ -1,9 +1,10 @@
 vpc = [{
-  vpc_cidr       = "10.0.0.0/16"
+  cidr_block = "10.0.0.0/16"
+  subnet_id   = "10.0.1.0/24"
   tags       = { "Name" : "my vpc" }
 }]
 subnet = [{
-  vpc_cidr       = "10.0.0.0/16"
+  cidr_block     = "10.0.0.0/16"
   public_subnet  = "10.0.1.0/24"
   private_subnet = "10.0.2.0/24"
   availability_zone               = "ap-south-1a"
@@ -37,27 +38,31 @@ sgrules = [{
 }]
 
 route_table = [{
- vpc_cidr       = "10.0.0.0/16"
+cidr_block = "0.0.0.0/0"
  
   tags       = { "Name" : "route_table" }
 }]
 routetableassoc = [{
-  subnet_id      = var.private_subnet_id
-  route_table_id = aws_route_table.private_rt.id
+  subnet_id      = "8rr8wr"
+  route_table_id = "8rr7834"
 }]
 
 igw = [{
   vpc_id     = "vpc-0abcd1234efgh5678"
 }]
 nat = [{
-   allocation_id            = "*******"
-   private_ip               = "*******"
-   subnet_id                = "subnet-0caafad8c1d8c5063"
+  allocation_id = "eipalloc-123456"
+  private_ip = "10.0.1.100"
+  subnet_id     = "8rr8wr"
 }]
 
 instance = [{
   ami                         = "ami-00bb6a80f01f03502"
   instance_type               = "t2.micro"
   associate_public_ip_address = true
-  tags                        = "name : aws_instance"  
+  subnet_id                   ="10.0.1.0/24"
+  tags                        = {
+   Name = "aws_instance"
+ }
+ 
   }]

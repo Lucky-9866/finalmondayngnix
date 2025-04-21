@@ -1,9 +1,9 @@
 resource "aws_security_group" "sg" {
+  vpc_id = var.vpc_id
   name                   = var.sgname
   description            = var.description
   name_prefix            = var.name_prefix
   revoke_rules_on_delete = var.revoke_rules_on_delete
-  vpc_id                 = var.vpc_id
   tags                   = var.tags
 
   dynamic "egress" {

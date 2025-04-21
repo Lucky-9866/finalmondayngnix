@@ -11,14 +11,9 @@ variable "instance_type" {
 variable "subnet_id" {
   type = string
 }
-
-
-variable "security_groups" {
-  type = any
-}
-
-variable "arn" {
+variable "security_group_id" {
   type = string
+  
 }
 
 variable "associate_public_ip_address" {
@@ -60,43 +55,16 @@ variable "host_resource_group_arn" {
 variable "iam_instance_profile" {
   type = string
 }
-
-variable "id" {
-  type = string
-}
-
 variable "instance_initiated_shutdown_behavior" {
   type = string
 }
-variable "instance_lifecycle" {
-  type = string
-}
 
-variable "instance_state" {
-  type = string
-}
-
-variable "ipv6_address_count" {
-  type = string
-}
-
-variable "ipv6_addresses" {
-  type = any
-}
 
 variable "key_name" {
   type = string
 }
 
 variable "monitoring" {
-  type = string
-}
-
-variable "outpost_arn" {
-  type = string
-}
-
-variable "password_data" {
   type = string
 }
 
@@ -108,35 +76,11 @@ variable "placement_partition_number" {
   type = string
 }
 
-variable "primary_network_interface_id" {
-  type = string
-}
-
-variable "private_dns" {
-  type = string
-}
-
-variable "private_ip" {
-  type = string
-}
-
-variable "public_dns" {
-  type = string
-}
-
 variable "public_ip" {
   type = string
 }
 
-variable "secondary_private_ips" {
-  type = any
-}
-
 variable "source_dest_check" {
-  type = string
-}
-
-variable "spot_instance_request_id" {
   type = string
 }
 
@@ -160,9 +104,6 @@ variable "user_data_replace_on_change" {
   type = string
 }
 
-variable "vpc_security_group_ids" {
-  type = any
-}
 
 variable "hibernation" {
     type = string
@@ -171,3 +112,4 @@ variable "hibernation" {
 variable "volume_tags" {
    type = map(string)
 }
+

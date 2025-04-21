@@ -1,3 +1,3 @@
-output "int_gateway" {
-  value = aws_gateway.igw.id
+output "internet_gateway_id" {
+  value = aws_internet_gateway.igw.id
 }

@@ -1,5 +1,5 @@
 resource "aws_vpc" "main" {
-  cidr_block                           = var.vpc_cidr
+  cidr_block                           = var.cidr_block
   instance_tenancy                     = var.instance_tenancy
   ipv4_ipam_pool_id                    = var.ipv4_ipam_pool_id
   ipv4_netmask_length                  = var.ipv4_netmask_length

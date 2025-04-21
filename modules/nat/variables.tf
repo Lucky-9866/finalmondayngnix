@@ -1,3 +1,6 @@
+variable " vpc" {
+  type =  string
+}
 variable "allocation_id" {
   type = string
 }
@@ -7,7 +10,7 @@ variable "connectivity_type" {
 variable "private_ip" {
    type = string
 }
-variable "public_subnet_id" {
+variable "subnet_id" {
    type = string
 }
 variable "tags" {

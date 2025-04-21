@@ -60,7 +60,7 @@ variable "route_table" {
   type = list(object({
     vpc_id                     = optional(string)
     carrier_gateway_id         = optional(string)
-    cidr_block                 = list(string)
+    cidr_block                 = string
     core_network_arn           = optional(string)
     destination_prefix_list_id = optional(string)
     egress_only_gateway_id     = optional(string)
@@ -94,11 +94,9 @@ variable "instance" {
   type = list(object({
 
     host_id                              = optional(string)
-    subnet_id                            = list(string)
+    subnet_id                            = string
     ami                                  = optional(string)
     instance_type                        = optional(string)
-    security_groups                      = optional(string)
-    arn                                  = optional(string)
     associate_public_ip_address          = optional(string)
     availability_zone                    = optional(string)
     disable_api_stop                     = optional(string)
@@ -110,14 +108,9 @@ variable "instance" {
     iam_instance_profile                 = optional(string)
     id                                   = optional(string)
     instance_initiated_shutdown_behavior = optional(string)
-    instance_lifecycle                   = optional(string)
-    instance_state                       = optional(string)
-    ipv6_address_count                   = optional(string)
-    ipv6_addresses                       = optional(string)
+    #ipv6_addresses                       = optional(string)
     key_name                             = optional(string)
     monitoring                           = optional(string)
-    outpost_arn                          = optional(string)
-    password_data                        = optional(string)
     placement_group                      = optional(string)
     placement_partition_number           = optional(string)
     primary_network_interface_id         = optional(string)
@@ -125,17 +118,14 @@ variable "instance" {
     private_ip                           = optional(string)
     public_dns                           = optional(string)
     public_ip                            = optional(string)
-    secondary_private_ips                = optional(string)
     source_dest_check                    = optional(string)
-    spot_instance_request_id             = optional(string)
     tags                                 = optional(map(string))
     tenancy                              = optional(string)
     user_data                            = optional(string)
     user_data_base64                     = optional(string)
     user_data_replace_on_change          = optional(string)
-    vpc_security_group_ids               = optional(string)
     hibernation                          = optional(string)
-    volume_tags                          = optional(string)
+    volume_tags                          = optional(map(string))
   }))
 
   default = []
@@ -144,7 +134,7 @@ variable "instance" {
 variable "nat" {
     type = list(object({
 
-   allocation_id                      = list(string) 
+   allocation_id                      = string 
    connectivity_type                  = optional(string)
    private_ip                         = optional(string)
    subnet_id                          = optional(string)
