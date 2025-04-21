@@ -1,0 +1,15 @@
+variable "allocation_id" {
+  type = string
+}
+variable "connectivity_type" {
+   type = string
+}
+variable "private_ip" {
+   type = string
+}
+variable "public_subnet_id" {
+   type = string
+}
+variable "tags" {
+   type = map(string) 
+}
