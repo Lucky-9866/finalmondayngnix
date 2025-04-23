@@ -43,8 +43,8 @@ cidr_block = "0.0.0.0/0"
   tags       = { "Name" : "route_table" }
 }]
 routetableassoc = [{
-  subnet_id      = "8rr8wr"
-  route_table_id = "8rr7834"
+  subnet_id      = "10.0.1.0/24"
+  route_table_id = ""
 }]
 
 igw = [{
@@ -52,8 +52,8 @@ igw = [{
 }]
 nat = [{
   allocation_id = "eipalloc-123456"
-  private_ip = "10.0.1.100"
-  subnet_id     = "8rr8wr"
+  private_ip    = "10.0.1.100"
+  subnet_id     = "10.0.1.0/24"
 }]
 
 instance = [{
