@@ -18,7 +18,7 @@ module "vpc" {
 
 module "subnet" {
   source                          = "./modules/subnet"
-  for_each                         = { for i, s in var.subnet : i => s }
+  for_each                        = { for eachNetwork in var.subnet: index(var.subnet, eachNetwork) => eachNetwork }
   vpc_id                          = module.vpc[each.key].vpc_id
   cidr_block                      = each.value.cidr_block
   availability_zone               = each.value.availability_zone

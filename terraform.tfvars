@@ -8,7 +8,7 @@ subnet = [{
   public_subnet  = "10.0.1.0/24"
   private_subnet = "10.0.2.0/24"
   availability_zone               = "ap-south-1a"
-  tags                            = {Name = "my subnets"}
+  tags                            = {Name = "my subnet"}
 }]
 sgrules = [{
   name        = "mysecuritygroup1"
