@@ -11,7 +11,7 @@ resource "aws_route_table" "main" {
     ipv6_cidr_block            = var.ipv6_cidr_block
     local_gateway_id           = var.local_gateway_id
     nat_gateway_id             = var.nat_gateway_id
-    network_interface_id       = var.network_interface_id
+    network_interface_id       = var.network_interface_id 
     transit_gateway_id         = var.transit_gateway_id
     vpc_endpoint_id            = var.vpc_endpoint_id
     vpc_peering_connection_id  = var.vpc_peering_connection_id
